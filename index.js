@@ -1,8 +1,14 @@
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
 const app = express()
-const PORT = 3001
+const path = require('path');
+const PORT = process.env.PORT || 3001
+
 app.use(express.json());
+app.use(cors())
+app.use(express.static(path.join(__dirname, 'dist')));
+//const dirnames = path.join(__dirname, 'dist')
 
 let phonebook = [
     {id: 1, name:"Lucas", number:"1134700227" },
@@ -11,6 +17,7 @@ let phonebook = [
 ];
 app.get('/api/persons',(request,response)=>{
     response.json(phonebook)
+    //console.log(dirnames)
     
 })
 
