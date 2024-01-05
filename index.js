@@ -4,6 +4,7 @@ const cors = require('cors')
 const app = express()
 const path = require('path');
 const PORT = process.env.PORT || 3001
+const Person = require('./mongo.js')
 
 app.use(express.json());
 app.use(cors())
@@ -15,11 +16,6 @@ let phonebook = [
     {id: 2, name:"Enzo", number:"12345678" },
     {id: 3, name:"Leo", number:"919192390" },
 ];
-app.get('/api/persons',(request,response)=>{
-    response.json(phonebook)
-    //console.log(dirnames)
-    
-})
 
 morgan.token('postData', (req) => {
     if (req.method === 'POST') {
