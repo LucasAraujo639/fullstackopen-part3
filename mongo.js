@@ -1,3 +1,4 @@
+// This module is not exported and shouldnt be a problem
 const mongoose = require('mongoose')
 require('dotenv').config()
 if (process.argv.length < 3) {
@@ -28,7 +29,7 @@ personSchema.set('toJSON', {
       delete returnedObject.__v
     }
   })
-  module.exports = mongoose.model('Person', personSchema)
+module.exports = mongoose.model('Person', personSchema)
 const Person = mongoose.model('Person', personSchema)
 
 
